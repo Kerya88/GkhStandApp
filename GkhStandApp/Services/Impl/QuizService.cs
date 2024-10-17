@@ -1,8 +1,8 @@
 ﻿using GJIService;
-using GkhQuizApp.Entities;
-using GkhQuizApp.Enums;
+using GkhStandApp.Entities;
+using GkhStandApp.Enums;
 
-namespace GkhQuizApp.Services
+namespace GkhStandApp.Services
 {
     public class QuizService(ICryptoService cryptoService) : IQuizService
     {

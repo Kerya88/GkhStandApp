@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Mail;
 
-namespace GkhQuizApp.Services
+namespace GkhStandApp.Services
 {
     public class EmailService(ICryptoService cryptoService) : IEmailService
     {

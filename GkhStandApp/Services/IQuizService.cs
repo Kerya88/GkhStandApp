@@ -1,6 +1,6 @@
-﻿using GkhQuizApp.Entities;
+﻿using GkhStandApp.Entities;
 
-namespace GkhQuizApp.Services
+namespace GkhStandApp.Services
 {
     public interface IQuizService
     {

@@ -1,4 +1,4 @@
-﻿namespace GkhQuizApp.Enums
+﻿namespace GkhStandApp.Enums
 {
     public enum QuestionType
     {

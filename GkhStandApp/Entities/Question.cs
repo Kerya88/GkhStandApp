@@ -1,6 +1,6 @@
-﻿using GkhQuizApp.Enums;
+﻿using GkhStandApp.Enums;
 
-namespace GkhQuizApp.Entities
+namespace GkhStandApp.Entities
 {
     public class Question
     {

@@ -1,13 +1,12 @@
-﻿using GJIService;
-using GkhQuizApp.Entities;
-using GkhQuizApp.Enums;
-using GkhQuizApp.Services;
+﻿using GkhStandApp.Entities;
+using GkhStandApp.Enums;
+using GkhStandApp.Services;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace GkhQuizApp
+namespace GkhStandApp
 {
     public partial class MainWindow : Window
     {

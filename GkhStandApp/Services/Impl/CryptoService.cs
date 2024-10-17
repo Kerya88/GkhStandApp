@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace GkhQuizApp.Services
+namespace GkhStandApp.Services
 {
     public class CryptoService : ICryptoService
     {

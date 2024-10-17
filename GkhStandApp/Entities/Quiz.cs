@@ -1,4 +1,4 @@
-﻿namespace GkhQuizApp.Entities
+﻿namespace GkhStandApp.Entities
 {
     public class Quiz
     {

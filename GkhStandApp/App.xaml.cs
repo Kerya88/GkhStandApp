@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace GkhQuizApp
+namespace GkhStandApp
 {
     /// <summary>
     /// Interaction logic for App.xaml

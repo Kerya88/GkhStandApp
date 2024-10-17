@@ -1,4 +1,4 @@
-﻿namespace GkhQuizApp.Services
+﻿namespace GkhStandApp.Services
 {
     public interface IEmailService
     {
