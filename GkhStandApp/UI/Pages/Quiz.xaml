@@ -1,0 +1,48 @@
+﻿<Page x:Class="GkhStandApp.UI.Pages.Quiz"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:GkhStandApp.UI.Pages" 
+      xmlns:local1="clr-namespace:GkhStandApp.UI.CustomControls"
+      Title="Quiz">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Контент будет занимать всю оставшуюся область -->
+            <RowDefinition Height="Auto" />
+            <!-- Клавиатура занимает столько места, сколько ей нужно -->
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10">
+            <TextBlock x:Name="QuizName" FontSize="50" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10"/>
+            <TextBlock x:Name="InfoText" FontSize="32" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10"/>
+            <TextBlock x:Name="QuestionText" FontSize="32" TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed" Margin="0,10"/>
+
+            <TextBox x:Name="AnswerTextBox" Visibility="Collapsed" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="FioTextBox" Visibility="Collapsed" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="ROTextBox" Visibility="Collapsed" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+            <ItemsControl x:Name="OptionsListBox" HorizontalAlignment="Center" Margin="0,10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Content="{Binding}" 
+                                     GotFocus="TextBox_LostFocus" 
+                                     GroupName="OptionsGroup" 
+                                     Checked="RadioButton_Checked"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Name="StartButton" Content="Начать" Click="StartButton_Click" Visibility="Collapsed" GotFocus="TextBox_LostFocus" 
+                    Width="300" Height="100" Margin="0,10" FontSize="22" Style="{StaticResource CustomButtonStyle}"/>
+            <Button Name="NextButton" Content="Следующий вопрос" Click="NextButton_Click" Visibility="Collapsed" GotFocus="TextBox_LostFocus" 
+                    Width="300" Height="50" Margin="0,10" FontSize="22" Style="{StaticResource CustomButtonStyle}"/>
+            <Button Name="SearchButton" Content="Поиск" Click="SearchButton_Click" Visibility="Collapsed" GotFocus="TextBox_LostFocus" 
+                    Width="300" Height="50" Margin="0,10" FontSize="22" Style="{StaticResource CustomButtonStyle}"/>
+            <Button Name="RebootButton" Content="Закончить" Click="RebootButton_Click" Visibility="Collapsed" GotFocus="TextBox_LostFocus" 
+                    Width="300" Height="50" Margin="0,10" FontSize="22" Style="{StaticResource CustomButtonStyle}"/>
+        </StackPanel>
+
+        <local1:CustomKeyboard x:Name="CustomKeyboardControl" Grid.Row="1" Visibility="Collapsed"/>
+    </Grid>
+</Page>

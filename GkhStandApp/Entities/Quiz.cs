@@ -11,7 +11,7 @@
         //текст прощания
         public string OutroText { get; set; }
         //Email опрвшиваемого
-        public string Email { get; set; }
+        public string UserId { get; set; }
         //список вопросов
         public List<Question> Questions { get; set; }
         //тест пройден

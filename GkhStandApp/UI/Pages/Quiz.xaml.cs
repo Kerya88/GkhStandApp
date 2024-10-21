@@ -1,33 +1,52 @@
-﻿using GkhStandApp.Entities;
-using GkhStandApp.Enums;
+﻿using GkhStandApp.Enums;
 using GkhStandApp.Services;
+using GkhStandApp.UI.CustomControls;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
-namespace GkhStandApp
+namespace GkhStandApp.UI.Pages
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для Quiz.xaml
+    /// </summary>
+    public partial class Quiz : Page
     {
         static readonly CryptoService _cryptoService = new CryptoService();
         static readonly QuizService _quizService = new QuizService(_cryptoService);
 
-        static Quiz _currentQuiz;
+        static Entities.Quiz _currentQuiz;
         static int _currentQuestionIndex;
         static Dictionary<string, string[]> _foundedROs;
         string selectedKey;
 
-        public MainWindow()
+        public Quiz()
         {
             InitializeComponent();
             LoadQuiz();
 
             FioTextBox.TextChanged += FioTextBox_TextChanged;
             ROTextBox.TextChanged += ROTextBox_TextChanged;
+        }
 
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                CustomKeyboardControl.AttachTextBox(textBox); // Подключаем текстовое поле к клавиатуре
+                CustomKeyboardControl.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Прячем клавиатуру при потере фокуса, если она не активна
+            if (!CustomKeyboardControl.IsKeyboardFocusWithin)
+            {
+                CustomKeyboardControl.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void FioTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -54,7 +73,7 @@ namespace GkhStandApp
             var isValid = Regex.IsMatch(ROTextBox.Text, pattern);
 
             // Можно заблокировать кнопку Next, если текст не соответствует шаблону
-            NextButton.IsEnabled = isValid;
+            SearchButton.IsEnabled = isValid;
 
             if (!isValid && !string.IsNullOrEmpty(ROTextBox.Text))
             {
@@ -142,8 +161,9 @@ namespace GkhStandApp
             else
             {
                 _currentQuiz.Passed = true;
-
                 ShowOutro(_currentQuiz.OutroText);
+
+                _quizService.SendPassedQuiz(_currentQuiz);
             }
         }
 
@@ -163,8 +183,15 @@ namespace GkhStandApp
             {
                 case QuestionType.NotSet:
                     {
-                        question.Answer = AnswerTextBox.Text;
-                        AnswerTextBox.Text = string.Empty;
+                        if (!string.IsNullOrEmpty(AnswerTextBox.Text))
+                        {
+                            question.Answer = AnswerTextBox.Text;
+                            AnswerTextBox.Text = string.Empty;
+                        }
+                        else
+                        {
+                            return;
+                        }
                         break;
                     }
                 case QuestionType.IsAnswerId:
@@ -189,6 +216,8 @@ namespace GkhStandApp
                             if (!string.IsNullOrEmpty(uk))
                             {
                                 question.Answer = _foundedROs[selectedKey][0];
+                                _currentQuiz.UserId += _foundedROs[selectedKey][0];
+
                                 InfoText.Text = $"Ваша управляющая компания - {uk}";
                                 InfoText.Visibility = Visibility.Visible;
                                 selectedKey = string.Empty;
@@ -210,7 +239,10 @@ namespace GkhStandApp
                 case QuestionType.IsFIO:
                     {
                         question.Answer = FioTextBox.Text;
+                        _currentQuiz.UserId = FioTextBox.Text.ToLower().Replace(" ", "");
+
                         FioTextBox.Text = string.Empty;
+                        NextButton.IsEnabled = true;
                         break;
                     }
             }
@@ -236,10 +268,13 @@ namespace GkhStandApp
                 OptionsListBox.ItemsSource = _foundedROs.Keys;
                 NextButton.Visibility = Visibility.Visible;
                 InfoText.Visibility = Visibility.Collapsed;
+                InfoText.Foreground = new SolidColorBrush(Colors.Black);
             }
             else
             {
+                OptionsListBox.Visibility = Visibility.Collapsed;
                 InfoText.Visibility = Visibility.Visible;
+                InfoText.Foreground = new SolidColorBrush(Colors.Red);
                 InfoText.Text = "Ваш адрес не найден в системе Электронного ЖКХ. Попробуйте еще раз";
             }
 
@@ -266,7 +301,7 @@ namespace GkhStandApp
             SearchButton.Visibility = Visibility.Collapsed;
             RebootButton.Visibility = Visibility.Collapsed;
 
-            LoadQuiz();
+            NavigationService.Navigate(new Start());
         }
 
         private void ShowOutro(string message)

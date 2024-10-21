@@ -98,7 +98,7 @@ namespace GkhStandApp.Services
             {
                 Id = passedQuiz.Id,
                 FIO = passedQuiz.Questions.Where(x => x.QuestionType == QuestionType.IsFIO).First().Answer,
-                UserId = passedQuiz.Email,
+                UserId = passedQuiz.UserId,
                 Questions = passedQuiz.Questions.Select(x => new OnlineSurveyQuestionProxy
                 {
                     Id = x.Id,

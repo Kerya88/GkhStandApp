@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="GkhStandApp.UI.CustomControls.CustomKeyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GkhStandApp.UI.CustomControls">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="1" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="2" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="3" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="4" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="5" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="6" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="7" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="8" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="9" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="0" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="-" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="+" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="←" Click="Backspace_Click" Width="140" Height="100" FontSize="50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtnYo" Content="Й" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnC" Content="Ц" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnU" Content="У" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnK" Content="К" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnE" Content="Е" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnN" Content="Н" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnG" Content="Г" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnSh" Content="Ш" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnShi" Content="Щ" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnTh" Content="З" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnH" Content="Х" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnHard" Content="Ъ" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="CapsButton" Click="Caps_Click" Content="Caps" Width="140" Height="100" FontSize="50"/>
+            <Button x:Name="BtnF" Content="Ф" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnUi" Content="Ы" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnV" Content="В" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnA" Content="А" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnP" Content="П" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnR" Content="Р" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnO" Content="О" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnL" Content="Л" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnD" Content="Д" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnJ" Content="Ж" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnYe" Content="Э" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="ShiftButton" Click="Shift_Click" Content="↑" Width="140" Height="100" FontSize="50"/>
+            <Button x:Name="BtnYa" Content="Я" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnCh" Content="Ч" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnS" Content="С" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnM" Content="М" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnI" Content="И" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnT" Content="Т" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnSoft" Content="Ь" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnB" Content="Б" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button x:Name="BtnYu" Content="Ю" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <!--<Button Content="Enter" Click="Key_Click" Width="140" Height="100" FontSize="50"/>-->
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="," Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="." Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="!" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="/" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="Пробел" Click="Space_Click" Width="400" Height="100" FontSize="50"/>
+            <Button Content="?" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content=";" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content=":" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content="(" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+            <Button Content=")" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
+        </StackPanel>
+    </Grid>
+
+    
+</UserControl>
+
