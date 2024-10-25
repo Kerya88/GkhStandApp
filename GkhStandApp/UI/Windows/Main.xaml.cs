@@ -9,10 +9,10 @@ namespace GkhStandApp.UI.Windows
         {
             InitializeComponent();
 
-            MainFrame.Navigate(new Start());
-
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.None;
+
+            MainFrame.Navigate(new Start());
         }
     }
 }

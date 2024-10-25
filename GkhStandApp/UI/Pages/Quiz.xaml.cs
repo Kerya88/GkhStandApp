@@ -1,6 +1,7 @@
 ﻿using GkhStandApp.Enums;
 using GkhStandApp.Services;
 using GkhStandApp.UI.CustomControls;
+using GkhStandApp.UI.Pages.CustomBehaviours;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,11 +16,11 @@ namespace GkhStandApp.UI.Pages
     public partial class Quiz : Page
     {
         static readonly CryptoService _cryptoService = new CryptoService();
-        static readonly QuizService _quizService = new QuizService(_cryptoService);
+        readonly QuizService _quizService = new QuizService(_cryptoService);
 
-        static Entities.Quiz _currentQuiz;
-        static int _currentQuestionIndex;
-        static Dictionary<string, string[]> _foundedROs;
+        Entities.Quiz _currentQuiz;
+        int _currentQuestionIndex;
+        Dictionary<string, string[]> _foundedROs;
         string selectedKey;
 
         public Quiz()
@@ -51,7 +52,7 @@ namespace GkhStandApp.UI.Pages
 
         private void FioTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var pattern = @"^[А-ЯЁ]{1}[а-яё]{1,}\s[А-ЯЁ]{1}[а-яё]{1,}\s[А-ЯЁ]{1}[а-яё]{1,}$"; // Пример: допустимы только буквы и пробелы
+            var pattern = @"^[А-ЯЁ]{1}[а-яё]{1,}\s+[А-ЯЁ]{1}[а-яё]{1,}\s+[А-ЯЁ]{1}[а-яё]{1,}$"; // Пример: допустимы только буквы и пробелы
             var isValid = Regex.IsMatch(FioTextBox.Text, pattern);
 
             // Можно заблокировать кнопку Next, если текст не соответствует шаблону
@@ -85,6 +86,11 @@ namespace GkhStandApp.UI.Pages
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            InactivityTimerBehaviour.Attach(this);
+        }
+
         private void LoadQuiz()
         {
             try
@@ -111,7 +117,6 @@ namespace GkhStandApp.UI.Pages
             StartButton.Visibility = Visibility.Visible;
             NextButton.Visibility = Visibility.Collapsed;
             SearchButton.Visibility = Visibility.Collapsed;
-            RebootButton.Visibility = Visibility.Collapsed;
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -283,24 +288,6 @@ namespace GkhStandApp.UI.Pages
 
         private void RebootButton_Click(object sender, RoutedEventArgs e)
         {
-            QuizName.Text = string.Empty;
-            InfoText.Text = string.Empty;
-            QuestionText.Text = string.Empty;
-            AnswerTextBox.Text = string.Empty;
-            FioTextBox.Text = string.Empty;
-            ROTextBox.Text = string.Empty;
-
-            QuestionText.Visibility = Visibility.Collapsed;
-            AnswerTextBox.Visibility = Visibility.Collapsed;
-            FioTextBox.Visibility = Visibility.Collapsed;
-            ROTextBox.Visibility = Visibility.Collapsed;
-            OptionsListBox.Visibility = Visibility.Collapsed;
-
-            StartButton.Visibility = Visibility.Collapsed;
-            NextButton.Visibility = Visibility.Collapsed;
-            SearchButton.Visibility = Visibility.Collapsed;
-            RebootButton.Visibility = Visibility.Collapsed;
-
             NavigationService.Navigate(new Start());
         }
 
@@ -316,7 +303,6 @@ namespace GkhStandApp.UI.Pages
             StartButton.Visibility = Visibility.Collapsed;
             NextButton.Visibility = Visibility.Collapsed;
             SearchButton.Visibility = Visibility.Collapsed;
-            RebootButton.Visibility = Visibility.Visible;
         }
     }
 }

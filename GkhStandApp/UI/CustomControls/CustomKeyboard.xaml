@@ -68,7 +68,6 @@
             <Button x:Name="BtnSoft" Content="Ь" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
             <Button x:Name="BtnB" Content="Б" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
             <Button x:Name="BtnYu" Content="Ю" Click="Key_Click" Width="100" Height="100" FontSize="50"/>
-            <!--<Button Content="Enter" Click="Key_Click" Width="140" Height="100" FontSize="50"/>-->
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">

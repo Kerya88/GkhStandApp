@@ -7,16 +7,39 @@
       Title="Start">
 
     <Grid>
-        <Button Name="OpenQuizButton" Width="500" Height="100"
+        <Image x:Name="SlideshowImage" Width="960" Height="960" Stretch="UniformToFill" Visibility="Collapsed" />
+        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Name="OpenQuizButton" Width="500" Height="100" Margin="0,10"
                 FontSize="30"
-                VerticalAlignment="Center" HorizontalAlignment="Center"
                 Click="OpenQuizButton_Click"
                 Style="{StaticResource CustomButtonStyle}">
-            <TextBlock TextAlignment="Center">
-                Голосование
-                <LineBreak/>
-                Рейтинг управляющих компаний
-            </TextBlock>
-        </Button>
+                <TextBlock TextAlignment="Center">
+                    Голосование
+                    <LineBreak/>
+                    Рейтинг управляющих компаний
+                </TextBlock>
+            </Button>
+            <Button Name="OpenManOrgInfoButton" Width="500" Height="100" Margin="0,10"
+                FontSize="30"
+                Click="OpenManOrgInfoButton_Click"
+                Style="{StaticResource CustomButtonStyle}">
+                <TextBlock TextAlignment="Center">
+                    Кто управляет
+                    <LineBreak/>
+                    Моим домом
+                </TextBlock>
+            </Button>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 10 10">
+            <Image x:Name="DomLabel" Width="300" Height="150"
+                   RenderTransformOrigin="1,1" Stretch="Uniform"
+                   Source="pack://application:,,,/GkhStandApp;component/Resources/Images/DomLabel.png"/>
+            <Image x:Name="DomQR" Width="300" Height="350" HorizontalAlignment="Right"
+                   RenderTransformOrigin="1,1" Stretch="Uniform"
+                   Source="pack://application:,,,/GkhStandApp;component/Resources/Images/DomQR.png"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

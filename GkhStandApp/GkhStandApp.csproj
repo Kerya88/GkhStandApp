@@ -9,10 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Slideshow\**" />
+    <EmbeddedResource Remove="Resources\Slideshow\**" />
+    <None Remove="Resources\Slideshow\**" />
+    <Page Remove="Resources\Slideshow\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Fonts\Lato-Bold.ttf" />
     <None Remove="Resources\Fonts\Lato-Regular-v2.ttf" />
     <None Remove="Resources\Fonts\pt-sans_bold.ttf" />
     <None Remove="Resources\Fonts\pt-sans_regular.ttf" />
+    <None Remove="Resources\Images\DomLabel.png" />
+    <None Remove="Resources\Images\DomQR.png" />
+    <None Remove="Resources\Images\Slideshow\1.jpg" />
+    <None Remove="Resources\Images\Slideshow\2.jpg" />
+    <None Remove="Resources\Images\Slideshow\3.jpg" />
+    <None Remove="Resources\Images\Slideshow\4.jpg" />
+    <None Remove="Resources\Images\Slideshow\5.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +47,25 @@
     <Resource Include="Resources\Fonts\Lato-Regular-v2.ttf" />
     <Resource Include="Resources\Fonts\pt-sans_bold.ttf" />
     <Resource Include="Resources\Fonts\pt-sans_regular.ttf" />
+    <Resource Include="Resources\Images\DomLabel.png" />
+    <Resource Include="Resources\Images\DomQR.png" />
+    <Resource Include="Resources\Images\Slideshow\1.jpg" />
+    <Resource Include="Resources\Images\Slideshow\2.jpg" />
+    <Resource Include="Resources\Images\Slideshow\3.jpg" />
+    <Resource Include="Resources\Images\Slideshow\4.jpg" />
+    <Resource Include="Resources\Images\Slideshow\5.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UI\Pages\ManOrgInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UI\Pages\ManOrgInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

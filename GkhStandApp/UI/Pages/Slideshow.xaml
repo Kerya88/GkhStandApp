@@ -1,0 +1,9 @@
+﻿<Page x:Class="GkhStandApp.UI.Pages.Slideshow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Slideshow">
+
+    <Grid>
+        <Image x:Name="SlideshowImage" Width="960" Height="960" Stretch="UniformToFill"/>
+    </Grid>
+</Page>
